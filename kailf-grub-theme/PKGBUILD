@@ -1,0 +1,28 @@
+# Maintainer: Senderman <doletov.fyodor@yandex.ru>
+
+pkgname=kailf-grub-theme
+pkgver=1
+pkgrel=0
+pkgdesc="Arch Linux branded theme adapted from openSUSE Leap 42.1"
+url="https://github.com/Jdrqs/kailf-grub-theme"
+arch=('any')
+license=('MIT')
+depends=('grub')
+#source=("$pkgname-$pkgver.tar.gz::https://github.com/i3wm/grub2-theme-arch-leap/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver::git+https://github.com/Jdrqs/kailf-grub-theme.git")
+sha256sums=('SKIP')
+
+package() {
+  cd $pkgname-$pkgver
+  install -d "$pkgdir"/usr/share/grub/themes/kailf-grub-theme
+  install -m644 TRADEMARKS theme/* "$pkgdir"/usr/share/grub/themes/kailf-grub-theme/
+  msg ''
+  msg '========================================'
+  msg 'Installation:'
+  msg 'Please install package grub-customizer to select your grub theme.'
+  #msg 'Set GRUB_THEME=\"/boot/grub/theme.txt\" in your /etc/default/grub'
+  #msg 'Preffered resolution: GRUB_GFXMODE=1024x768'
+  #msg 'After editing, run # grub-mkconfig -o /boot/grub/grub.cfg'
+  #msg '========================================'
+  #msg ''
+}
